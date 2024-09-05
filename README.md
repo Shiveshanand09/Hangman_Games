@@ -1,12 +1,14 @@
 ## The Hangman Game
 
-When a user plays Hangman, the server first selects a secret word at random from a list. The server then returns a row of underscores (space separated)—one for each letter in the secret word—and asks the user to guess a letter. If the user guesses a letter that is in the word, the word is redisplayed with all instances of that letter shown in the correct positions, along with any letters correctly guessed on previous turns. If the letter does not appear in the word, the user is charged with an incorrect guess. The user keeps guessing letters until either (1) the user has correctly guessed all the letters in the word or (2) the user has made six incorrect guesses.
+In the game of Hangman, the server chooses a random secret word from a list. It then shows the player a row of underscores, each representing a letter in the word. The player must guess letters, one by one.
 
-You are required to write a "guess" function that takes current word (with underscores) as input and returns a guess letter. You will use the API codes below to play 1,000 Hangman games. You have the opportunity to practice before you want to start recording your game results.
+If the player guesses a correct letter, it will be revealed in all the correct positions in the word, along with any letters that have already been guessed correctly.
+If the player guesses a wrong letter, it's counted as an incorrect guess.
+The player wins if they guess all the letters in the word. They lose if they make six incorrect guesses.
+You need to write a "guess" function that takes the current state of the word (with some letters and underscores) and returns a guessed letter. This will be used to play 1,000 games of Hangman using the provided API. You can practice before submitting your results.
 
-Your algorithm is permitted to use a training set of approximately 250,000 dictionary words. Your algorithm will be tested on an entirely disjoint set of 250,000 dictionary words. Please note that this means the words that you will ultimately be tested on do NOT appear in the dictionary that you are given. You are not permitted to use any dictionary other than the training dictionary we provided. This requirement will be strictly enforced by code review.
+You are allowed to use a provided training set of about 250,000 dictionary words to improve your algorithm. However, the final test will be on a completely different set of 250,000 words that don't appear in the training set.
 
-You are provided with a basic, working algorithm. This algorithm will match the provided masked string (e.g. a _ _ l e) to all possible words in the dictionary, tabulate the frequency of letters appearing in these possible words, and then guess the letter with the highest frequency of appearence that has not already been guessed. If there are no remaining words that match then it will default back to the character frequency distribution of the entire dictionary.
+The basic algorithm works by matching the current word (with blanks) to possible words in the dictionary, counting how often letters appear, and guessing the most common letter that hasn’t been guessed yet. If no words match, it guesses based on overall letter frequency in the dictionary.
 
-The benchmark strategy is successful approximately 18% of the time. Your task is to design an algorithm that significantly outperforms this benchmark.
-
+Your goal is to create an algorithm that does better than this basic one, which wins around 18% of the time.
